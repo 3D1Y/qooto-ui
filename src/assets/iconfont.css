@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2626775 */
+  src: url("iconfont.woff2?t=1624698556429") format("woff2"),
+    url("iconfont.woff?t=1624698556429") format("woff"),
+    url("iconfont.ttf?t=1624698556429") format("truetype");
+}
+
+[class*="qt-icon-"] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.qt-icon-close:before {
+  content: "\e747";
+}
+
+.qt-icon-all:before {
+  content: "\e6ef";
+}
+
+.qt-icon-gift:before {
+  content: "\e6f9";
+}
+
+.qt-icon-play:before {
+  content: "\e701";
+}
+
+.qt-icon-QRcode:before {
+  content: "\e704";
+}
+
+.qt-icon-rmb:before {
+  content: "\e703";
+}
+
+.qt-icon-favorites-fill:before {
+  content: "\e721";
+}
+
+.qt-icon-ashbin:before {
+  content: "\e744";
+}
+
+.qt-icon-atm:before {
+  content: "\e745";
+}
+
+.qt-icon-good-fill:before {
+  content: "\e780";
+}
+
+.qt-icon-add-select:before {
+  content: "\e7b0";
+}
