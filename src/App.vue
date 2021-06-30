@@ -43,8 +43,22 @@
     <div>
       <qt-button @click="handleClick"> 点击功能 </qt-button>
     </div> -->
-    <qt-dialog title="提示" :dialogShow.sync="dialogShow" v-show="dialogShow">
-      要显示的内容
+    <qt-button type="primary" @click="dialogShow = true">点击</qt-button>
+    <qt-dialog
+      title="提示"
+      :dialogShow.sync="dialogShow"
+      width="300px"
+      top="100px"
+    >
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+      <template v-slot:footer>
+        <qt-button @click="dialogShow = false">取消</qt-button>
+        <qt-button type="primary" @click="dialogShow = false">确定</qt-button>
+      </template>
     </qt-dialog>
   </div>
 </template>
@@ -54,13 +68,11 @@ export default {
   name: 'App',
   data () {
     return {
-      dialogShow: true
+      dialogShow: false
     }
   },
   methods: {
-    handleClick () {
-      console.log('testclick')
-    }
+
   }
 }
 </script>

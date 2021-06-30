@@ -1,23 +1,24 @@
 <template>
-  <div class="qt-dialog-wrapper">
-    <div class="qt-dialog">
-      <div class="qt-dialog-header">
-        <slot name="qt-dialog-header">
-          <span class="qt-dialog-title">{{ title }}</span>
-        </slot>
-        <button class="qt-dialog-headerbtn" @click="changeShow">
-          <i class="qt-icon-close"></i>
-        </button>
-      </div>
-      <div class="qt-dialog-body">
-        <slot></slot>
-      </div>
-      <div class="qt-dialog-footer">
-        <qt-button>取消</qt-button>
-        <qt-button type="primary">确定</qt-button>
+  <transition name="fade">
+    <div class="qt-dialog-wrapper" v-if="dialogShow" @click.self="changeShow">
+      <div class="qt-dialog" :style="{ width, marginTop: top }">
+        <div class="qt-dialog-header">
+          <slot name="title">
+            <span class="qt-dialog-title">{{ title }}</span>
+          </slot>
+          <button class="qt-dialog-headerbtn" @click="changeShow">
+            <i class="qt-icon-close"></i>
+          </button>
+        </div>
+        <div class="qt-dialog-body">
+          <slot></slot>
+        </div>
+        <div class="qt-dialog-footer" v-if="$slots.footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -31,13 +32,19 @@ export default {
     dialogShow: {
       type: Boolean,
       default: true
+    },
+    width: {
+      type: String,
+      default: '50%'
+    },
+    top: {
+      type: String,
+      default: '100px'
     }
   },
   methods: {
     changeShow () {
-      console.log('shuchule')
       this.$emit('update:dialogShow', false)
-      console.log('dialogShow', this.dialogShow)
     }
   }
 }
@@ -94,10 +101,26 @@ export default {
       padding: 10px 20px 20px;
       text-align: right;
       box-sizing: border-box;
-      .qt-button:first-child {
+      ::v-deep .qt-button:first-child {
         margin-right: 20px;
       }
     }
+  }
+}
+.fade-enter-active {
+  animation: run 0.9s;
+}
+.fade-leave-active {
+  animation: run 0.9s reverse;
+}
+@keyframes run {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
